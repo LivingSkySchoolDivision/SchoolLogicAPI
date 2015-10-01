@@ -17,5 +17,11 @@ namespace SchoolLogicAPI.Controllers
         {
             return repository.GetAll();
         }
+
+        public ReportPeriod Get(int id)
+        {
+            return repository.Get(id);
+        }
+
     }
 }
