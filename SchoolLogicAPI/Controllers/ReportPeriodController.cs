@@ -22,6 +22,7 @@ namespace SchoolLogicAPI.Controllers
         {
             return repository.Get(id);
         }
-
+        
+        
     }
 }
