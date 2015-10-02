@@ -11,7 +11,9 @@ namespace SchoolLogicAPI.Models
         public DateTime EndDate { get; set; }
         public int ID { get; set; }
         public int TermId { get; set; }
+        public int TrackID { get; set; }
         public string Name { get; set; }
+        public string FullName { get; set; }
         public int SchoolGovId { get; set; }
         public int SchoolInternalId { get; set; }
         public int DaysOpenBeforeEnd { get; set; }
