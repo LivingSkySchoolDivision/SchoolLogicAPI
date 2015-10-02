@@ -79,15 +79,26 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ActiveReportPeriodsController.cs" />
     <Compile Include="Controllers\ReportPeriodController.cs" />
+    <Compile Include="Controllers\SchoolController.cs" />
+    <Compile Include="Controllers\SchoolsInDistrictController.cs" />
+    <Compile Include="Controllers\TermController.cs" />
+    <Compile Include="Controllers\TrackController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\District.cs" />
     <Compile Include="Models\ReportPeriod.cs" />
+    <Compile Include="Models\School.cs" />
     <Compile Include="Models\SchoolSetting.cs" />
+    <Compile Include="Models\Term.cs" />
+    <Compile Include="Models\Track.cs" />
     <Compile Include="Parsers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ReportPeriodRepository.cs" />
+    <Compile Include="Repositories\SchoolRepository.cs" />
     <Compile Include="Repositories\SchoolSettingsRepository.cs" />
+    <Compile Include="Repositories\TermRepository.cs" />
+    <Compile Include="Repositories\TrackRepository.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>

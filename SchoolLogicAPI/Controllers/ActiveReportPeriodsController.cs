@@ -26,5 +26,10 @@ namespace SchoolLogicAPI.Controllers
             return activeReportPeriods;
 
         }
+        
+        public ReportPeriod Get(int id)
+        {
+            return repository.Get(id);
+        }
     }
 }
