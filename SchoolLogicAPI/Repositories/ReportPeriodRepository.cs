@@ -49,6 +49,7 @@ namespace SchoolLogicAPI.Repositories
 
                     _cacheLastRefreshed = DateTime.Now;
 
+
                     // School settings (for days open before and after)
                     // Split into a dictionary by school ID
                     foreach (SchoolSetting setting in settingsRepository.GetAll())
@@ -77,42 +78,44 @@ namespace SchoolLogicAPI.Repositories
                             _allTerms.Add(term.ID, term);
                         }
                     }
-                    
-                    // Add additional information from the school's settings
-                    if (_schoolSettingsBySchool.ContainsKey(rp.SchoolInternalId))
-                    {
-                        if (_schoolSettingsBySchool[rp.SchoolInternalId].ContainsKey("Grades/PreReportDays"))
-                        {
-                            rp.DaysOpenBeforeEnd =
-                                Parsers.ParseInt(_schoolSettingsBySchool[rp.SchoolInternalId]["Grades/PreReportDays"]);
-                        }
 
-                        if (_schoolSettingsBySchool[rp.SchoolInternalId].ContainsKey("Grades/PostReportDays"))
-                        {
-                            rp.DaysOpenAfterEnd =
-                                Parsers.ParseInt(_schoolSettingsBySchool[rp.SchoolInternalId]["Grades/PostReportDays"]);
-                        }
+                }
+
+                // Add additional information from the school's settings
+                if (_schoolSettingsBySchool.ContainsKey(rp.SchoolInternalId))
+                {
+                    if (_schoolSettingsBySchool[rp.SchoolInternalId].ContainsKey("Grades/PreReportDays"))
+                    {
+                        rp.DaysOpenBeforeEnd =
+                            Parsers.ParseInt(_schoolSettingsBySchool[rp.SchoolInternalId]["Grades/PreReportDays"]);
                     }
 
-                    // Add track ID
-                    if (_allTerms.ContainsKey(rp.TermId))
+                    if (_schoolSettingsBySchool[rp.SchoolInternalId].ContainsKey("Grades/PostReportDays"))
                     {
-                        rp.TrackID = _allTerms[rp.TermId].TrackID;
-                    }
-                    
-                    // Add the "full name", including track and term name
-                    rp.FullName = rp.Name;
-
-                    if (_allTerms.ContainsKey(rp.TermId))
-                    {
-                        rp.FullName = _allTerms[rp.TermId].Name + "-" + rp.FullName;
-                    }
-
-                    if (_allTracks.ContainsKey(rp.TrackID))
-                    {
-                        rp.FullName = _allTracks[rp.TrackID].Name + "-" + rp.FullName;
+                        rp.DaysOpenAfterEnd =
+                            Parsers.ParseInt(_schoolSettingsBySchool[rp.SchoolInternalId]["Grades/PostReportDays"]);
                     }
                 }
+
+                // Add track ID
+                if (_allTerms.ContainsKey(rp.TermId))
+                {
+                    rp.TrackID = _allTerms[rp.TermId].TrackID;
+                }
+
+                // Add the "full name", including track and term name
+                rp.FullName = rp.Name;
+
+                if (_allTerms.ContainsKey(rp.TermId))
+                {
+                    rp.FullName = _allTerms[rp.TermId].Name + " - " + rp.FullName;
+                }
+
+                if (_allTracks.ContainsKey(rp.TrackID))
+                {
+                    rp.FullName = _allTracks[rp.TrackID].Name + " - " + rp.FullName;
+                }
+
             }
 
             return rp;
