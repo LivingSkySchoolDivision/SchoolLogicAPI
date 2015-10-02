@@ -26,7 +26,7 @@ namespace SchoolLogicAPI.Repositories
         }
         
 
-        public IEnumerable<ReportPeriod> GetAll()
+        public List<ReportPeriod> GetAll()
         {
             List<ReportPeriod> returnMe = new List<ReportPeriod>();
 
@@ -90,7 +90,7 @@ namespace SchoolLogicAPI.Repositories
             }
         }
 
-        public IEnumerable<ReportPeriod> GetBySchool(int schoolDatabaseID)
+        public List<ReportPeriod> GetBySchool(int schoolDatabaseID)
         {
             List<ReportPeriod> returnMe = new List<ReportPeriod>();
 
