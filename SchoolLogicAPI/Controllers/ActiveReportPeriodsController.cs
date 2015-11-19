@@ -21,7 +21,7 @@ namespace SchoolLogicAPI.Controllers
             // We only need report periods that are currently in progress
             List<ReportPeriod> activeReportPeriods = allReportPeriods.Where(
                 r => r.StartDate <= DateTime.Now &&
-                    r.DateCloses >= DateTime.Now).OrderBy(r => r.SchoolInternalId).ToList();
+                    r.DateCloses >= DateTime.Now).OrderBy(r => r.DateOpens).ToList();
 
             return activeReportPeriods;
 
