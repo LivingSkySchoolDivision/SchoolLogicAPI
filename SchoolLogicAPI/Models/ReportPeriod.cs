@@ -32,7 +32,17 @@ namespace SchoolLogicAPI.Models
                 return EndDate.AddDays(this.DaysOpenAfterEnd);
             }
         }
-        
+
+        public string DateOpensInEnglish
+        {
+            get { return Helpers.TimeUntil(this.DateOpens); }
+        }
+
+        public string DateClosesInEnglish
+        {
+            get { return Helpers.TimeUntil(this.DateCloses); }
+        }
+
         public string DateOpensLong
         {
             get { return this.DateOpens.ToLongDateString(); }

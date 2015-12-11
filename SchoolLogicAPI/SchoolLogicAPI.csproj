@@ -74,7 +74,9 @@
   <ItemGroup>
     <Content Include="Global.asax" />
     <None Include="Properties\PublishProfiles\SISTRAINING - TEST.pubxml" />
-    <None Include="Web.config.TEMPLATE" />
+    <None Include="Web.config.TEMPLATE">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers.cs" />
     <Compile Include="Models\District.cs" />
     <Compile Include="Models\ReportPeriod.cs" />
     <Compile Include="Models\School.cs" />
