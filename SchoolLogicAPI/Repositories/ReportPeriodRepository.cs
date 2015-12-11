@@ -12,6 +12,8 @@ namespace SchoolLogicAPI.Repositories
 {
     public class ReportPeriodRepository
     {
+        private const string SQLQueryStart = "SELECT ReportPeriod.iReportPeriodID, ReportPeriod.dStartDate, ReportPeriod.dEndDate, ReportPeriod.iTermID, ReportPeriod.cName, ReportPeriod.mComment, ReportPeriod.lPostMarks, School.cCode, School.iSchoolID FROM Track LEFT OUTER JOIN School ON Track.iSchoolID = School.iSchoolID RIGHT OUTER JOIN Term ON Track.iTrackID = Term.iTrackID RIGHT OUTER JOIN ReportPeriod ON Term.iTermID = ReportPeriod.iTermID";
+
         private static ReportPeriod sqlDataReaderToReportPeriod(SqlDataReader dataReader)
         {
             return new ReportPeriod()
@@ -132,8 +134,7 @@ namespace SchoolLogicAPI.Repositories
                 {
                     Connection = connection,
                     CommandType = CommandType.Text,
-                    CommandText =
-                        "SELECT ReportPeriod.iReportPeriodID, ReportPeriod.dStartDate, ReportPeriod.dEndDate, ReportPeriod.iTermID, ReportPeriod.cName, ReportPeriod.mComment, ReportPeriod.lPostMarks, ReportPeriod.iSchoolID, School.cCode FROM ReportPeriod LEFT OUTER JOIN School ON ReportPeriod.iSchoolID = School.iSchoolID;"
+                    CommandText = SQLQueryStart
                 };
                 sqlCommand.Connection.Open();
                 SqlDataReader dataReader = sqlCommand.ExecuteReader();
@@ -174,8 +175,7 @@ namespace SchoolLogicAPI.Repositories
                 {
                     Connection = connection,
                     CommandType = CommandType.Text,
-                    CommandText =
-                        "SELECT ReportPeriod.iReportPeriodID, ReportPeriod.dStartDate, ReportPeriod.dEndDate, ReportPeriod.iTermID, ReportPeriod.cName, ReportPeriod.mComment, ReportPeriod.lPostMarks, ReportPeriod.iSchoolID, School.cCode FROM ReportPeriod LEFT OUTER JOIN School ON ReportPeriod.iSchoolID = School.iSchoolID WHERE ReportPeriod.iSchoolID=@SCHOOLID;"
+                    CommandText = SQLQueryStart + " WHERE ReportPeriod.iSchoolID=@SCHOOLID;"
                 };
                 sqlCommand.Parameters.AddWithValue("SCHOOLID", schoolDatabaseID);
                 sqlCommand.Connection.Open();
@@ -217,7 +217,7 @@ namespace SchoolLogicAPI.Repositories
                 {
                     Connection = connection,
                     CommandType = CommandType.Text,
-                    CommandText = "SELECT ReportPeriod.iReportPeriodID, ReportPeriod.dStartDate, ReportPeriod.dEndDate, ReportPeriod.iTermID, ReportPeriod.cName, ReportPeriod.mComment, ReportPeriod.lPostMarks, ReportPeriod.iSchoolID, School.cCode FROM ReportPeriod LEFT OUTER JOIN School ON ReportPeriod.iSchoolID = School.iSchoolID WHERE ReportPeriod.iReportPeriodID=@REPORTPERIODID;"
+                    CommandText = SQLQueryStart + " WHERE ReportPeriod.iReportPeriodID=@REPORTPERIODID;"
                 };
                 sqlCommand.Parameters.AddWithValue("REPORTPERIODID", reportPeriodID);
                 sqlCommand.Connection.Open();

@@ -32,6 +32,16 @@ namespace SchoolLogicAPI.Models
                 return EndDate.AddDays(this.DaysOpenAfterEnd);
             }
         }
+        
+        public string DateOpensLong
+        {
+            get { return this.DateOpens.ToLongDateString(); }
+        }
+
+        public string DateClosesLong
+        {
+            get { return this.DateCloses.ToLongDateString(); }
+        }
 
         // Parameterless constructor for serialization
         public ReportPeriod() { }
