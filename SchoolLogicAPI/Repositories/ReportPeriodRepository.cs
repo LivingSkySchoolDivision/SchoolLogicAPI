@@ -21,7 +21,7 @@ namespace SchoolLogicAPI.Repositories
                 ID = Parsers.ParseInt(dataReader["iReportPeriodID"].ToString().Trim()),
                 Name = dataReader["cName"].ToString().Trim(),
                 StartDate =Parsers.ParseDate(dataReader["dStartDate"].ToString()),
-                EndDate = Parsers.ParseDate(dataReader["dEndDate"].ToString()),
+                EndDate = Parsers.ParseDate(dataReader["dEndDate"].ToString()).AddDays(1).AddMinutes(-1),
                 SchoolInternalId = Parsers.ParseInt(dataReader["iSchoolID"].ToString().Trim()),
                 SchoolGovId = Parsers.ParseInt(dataReader["cCode"].ToString().Trim()),
                 TermId = Parsers.ParseInt(dataReader["iTermID"].ToString().Trim())
