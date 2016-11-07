@@ -12,21 +12,21 @@ namespace SchoolLogicAPI
             TimeSpan timePeriod = date.Subtract(DateTime.Today);
             
             int daysUntil = timePeriod.Days;
-            
+
             string suffix = "";
             string prefix = "";
-            
-            if (daysUntil == 0)
+
+            if ((DateTime.Today.Year == date.Year) && (DateTime.Today.Month == date.Month) && (DateTime.Today.Day == date.Day))
             {
                 return "Today";
             }
 
-            if (daysUntil == 1)
+            if ((DateTime.Today.Year == date.Year) && (DateTime.Today.Month == date.Month) && (DateTime.Today.Day + 1 == date.Day))
             {
                 return "Tomorrow";
             }
 
-            if (daysUntil == -1)
+            if ((DateTime.Today.Year == date.Year) && (DateTime.Today.Month == date.Month) && (DateTime.Today.Day - 1 == date.Day))
             {
                 return "Yesterday";
             }
